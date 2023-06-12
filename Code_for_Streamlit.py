@@ -15,6 +15,10 @@ st.title('Статистика болезней в компании')
 
 uploaded_file = st.file_uploader("Выберите файл с данными", type='csv')
 
+check_button = st.button('Или воспользуйтесь тестовыми данными')
+if check_button:
+    uploaded_file = 'https://raw.githubusercontent.com/vladimir-molotkov/m.video_test_task/main/test_data.csv'
+
 if uploaded_file is None:
     image = Image.open(requests.get('https://drive.google.com/u/0/uc?id=1YfEK8WK4tkZasjYpFSIrqCQHCGg3LUxL&export=download', stream=True).raw)
     st.image(image, caption='Жду данные', width=300)
