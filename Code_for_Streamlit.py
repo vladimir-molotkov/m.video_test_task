@@ -13,7 +13,12 @@ plt.style.use('_mpl-gallery')    # Настройка стиля гистогр�
 
 st.title('Статистика болезней в компании')
 
-uploaded_file = st.file_uploader("Выберите файл с данными", type='csv')
+action = st.radio("Загрузить файл или использовать тестовые данные", ('Загрузить', 'Тестовые'))
+if action == 'Загрузить':
+    uploaded_file = st.file_uploader("Выберите файл с данными", type='csv')
+
+if action == 'Тестовые':
+    uploaded_file = 'https://raw.githubusercontent.com/vladimir-molotkov/m.video_test_task/main/test_data.csv'
 
 if uploaded_file is None:
     image = Image.open(requests.get('https://drive.google.com/u/0/uc?id=1YfEK8WK4tkZasjYpFSIrqCQHCGg3LUxL&export=download', stream=True).raw)
